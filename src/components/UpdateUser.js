@@ -34,7 +34,7 @@ export function UpdateUser({ _id, handleClose, handleUpdate }) {
         setIsLoading(true)
         console.log({ _id }, { data });
         axios
-            .put(`http://localhost:4000/user/${_id}`, data)
+            .put(`https://todo-apilh.herokuapp.com/user/${_id}`, data)
             .then((res) => {
                 setData({ fullName: "", email: "" });
                 console.log(res.data.message);

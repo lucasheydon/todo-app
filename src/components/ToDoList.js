@@ -29,7 +29,7 @@ function ToDoList() {
         function () {
             setIsLoading(true)
             axios
-                .get("http://localhost:4000/todo")
+                .get("https://todo-apilh.herokuapp.com/todo")
                 .then((res) => {
                     console.log(res.data);
                     setTodo(res.data);
@@ -53,7 +53,7 @@ function ToDoList() {
     }
 
     function handleDelete(e) {
-        axios.delete(`http://localhost:4000/todo/${e.target.name}`);
+        axios.delete(`https://todo-apilh.herokuapp.com/todo/${e.target.name}`);
         setTodo((data) => {
             return data.filter((todo) => todo._id !== e.target.name);
         });

@@ -30,7 +30,7 @@ useEffect(
         function () {
             setIsLoading(true)
             axios
-                .get("http://localhost:4000/user")
+                .get("https://todo-apilh.herokuapp.com/user")
                 .then((res) => {
                     console.log(res.data);
                     setUser(res.data);
@@ -54,7 +54,7 @@ useEffect(
     }
 
     function handleDelete(e) {
-        axios.delete(`http://localhost:4000/user/${e.target.name}`);
+        axios.delete(`https://todo-apilh.herokuapp.com/user/${e.target.name}`);
         setUser((data) => {
             return data.filter((user) => user._id !== e.target.name);
         });
