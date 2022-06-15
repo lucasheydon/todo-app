@@ -47,12 +47,6 @@
   font-size: 1.3em;
 }
 
-#logoutBtn {
-  position: fixed;
-  top: 2%;
-  right: 15%;
-}
-
 #adminBtn {
   position: fixed;
   top: 1.5%;
@@ -341,3 +335,11 @@ a {
 }
 
 .ldio-7zpqp1ytiv6 div { box-sizing: content-box; }
+
+.modal {
+  color: black;
+}
+
+#helpSwitcher {
+  display: inline;
+}

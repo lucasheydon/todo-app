@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UpdateToDo } from "./UpdateToDo";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoadingSpinner2 from "./LoadingSpinner2";
+import Cookies from 'js-cookie';
 
 function ToDoItem({ data, handleEdit, handleDelete }) {
     const { _id, title} = data;
@@ -24,6 +25,16 @@ function ToDoList() {
   const [id, setId] = useState("");
   const [update, setUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  let isLoggedIn = localStorage.getItem('user');
+  console.log(isLoggedIn);
+
+  useEffect(() => {
+    if(isLoggedIn == null){
+        navigate('/login')
+    }
+  },[isLoggedIn])
 
   useEffect(
         function () {
@@ -68,7 +79,7 @@ if(isLoading){
     return <LoadingSpinner2 />
   } else {
     return (
-      <section className="container">
+      <section className="container">        
       <section className="contents">
       <Link to="/createtodo" className="button-new">
       <FontAwesomeIcon icon={faPlus} id="plusIcon" />

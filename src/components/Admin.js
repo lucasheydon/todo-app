@@ -35,8 +35,8 @@ useEffect(
                     console.log(res.data);
                     setUser(res.data);
                     setIsLoading(false)
-                })
-                .catch((err) => {
+                }).catch((res, err) => {
+                    alert(res.data)
                     console.log(err.message);
                 });
             },

@@ -7,11 +7,12 @@ import CreateToDo from "./components/CreateToDo";
 import Admin from "./components/Admin";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Cookies from "js-cookie";
+console.log("cookie", Cookies.get("sid"));
 
 
 function App() {
-  const [isLoggedIn, setLogin] = useState();
-  const [isDarkMode, setDarkMode] = useState('false')
+  const [isDarkMode, setDarkMode] = useState('false');
 
   useEffect(() => {
     let darkTheme = localStorage.getItem('DarkMode')
@@ -43,17 +44,7 @@ function App() {
       setDarkMode('false')
     }
   }
-
-  useEffect(() => {
-    if (localStorage.getItem("user") !== null) {
-      setLogin(true);
-    } else {
-      setLogin(false);
-    }
-  }, []);
   
-  console.log(isLoggedIn);  
-
   return (
       <div className="App">
        <BrowserRouter>

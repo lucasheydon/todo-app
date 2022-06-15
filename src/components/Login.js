@@ -1,19 +1,15 @@
 import { React, useState, useEffect } from "react";
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from 'axios';
-import jwt_decode from "jwt-decode";
-
-function Logout() {
-  localStorage.removeItem("user")
-};
 
 function Login() {
   const [user, setUser] = useState();
+  const navigate = useNavigate();
+
   const validateFields = Yup.object().shape({
     email: Yup.string().max(255).required('Email is required'),
     password: Yup.string()
@@ -48,6 +44,7 @@ let formik = useFormik({
   }
 });
 
+
 function HandleSubmit(e){
   e.preventDefault();
   let email = e.target.email.value;
@@ -61,11 +58,12 @@ function HandleSubmit(e){
   }).then(response => {
     if(!response.ok){
     } else {
+      navigate('/todo')
       return response.json();
     }
   }).then(data => {
     console.log(data)
-    localStorage.setItem('user', JSON.stringify(data))
+    localStorage.setItem('user', JSON.stringify(email))
     setUser(data)
   })
 }
@@ -119,8 +117,6 @@ function HandleSubmit(e){
             Forgot <a href="#">password?</a>
           </p>
         </form>
-        <button id="logout" onClick={Logout} >Logout</button>
-
       </div>
     );
   }
