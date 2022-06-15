@@ -30,7 +30,7 @@ export function UpdateToDo({ _id, handleClose, handleUpdate }) {
     function handleSubmit(e) {
         setIsLoading(true)
         axios
-            .put(`http://localhost:4000/todo/${_id}`, data)
+            .put(`https://todo-apilh.herokuapp.com/todo/${_id}`, data)
             .then((res) => {
                 setData({ title: ""});
                 console.log(res.data.message);

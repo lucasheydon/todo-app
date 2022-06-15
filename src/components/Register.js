@@ -28,7 +28,7 @@ function Register() {
         },
         validationSchema: validateFields,
         onSubmit: (formData) => {
-            fetch("http://localhost:4000/user", {
+            fetch("https://todo-apilh.herokuapp.com/user", {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json",

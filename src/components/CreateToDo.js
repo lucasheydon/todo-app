@@ -20,7 +20,7 @@ export default function CreateToDo() {
         validationSchema: validateFields,
         onSubmit: (formData) => {
         setIsLoading(true)
-        fetch("http://localhost:4000/todo", {
+        fetch("https://todo-apilh.herokuapp.com/todo", {
             method: "POST",
             headers: {
                 'Content-Type': "application/json",
@@ -47,7 +47,7 @@ export default function CreateToDo() {
         e.preventDefault();
         setIsLoading(true)
         axios
-            .post("http://localhost:4000/todo", data)
+            .post("https://todo-apilh.herokuapp.com/todo", data)
             .then((res) => {
                 setData({ title: ""});
                 console.log(res.data.message);
